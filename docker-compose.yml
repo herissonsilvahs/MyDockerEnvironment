@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+
+### Apache with php-7.2
+
+    apache-php-7.2:
+        build: ./apache2-php-7.2/
+        volumes:
+        - ./html:/var/www/html/
+	- ./php/:/etc/php/7.2/
+        environment:
+            WEB_DOCUMENT_ROOT: "/var/www/html"
+        ports:
+            - "80:80"
+            - "443:443"
+        privileged: true
+        links:
+            - mysql-5_7_22.app
+
+### Mysql 5.7.22
+
+    mysql-5_7_22.app:
+        image: mysql:5.7.22
+        container_name: mysql-5_7_22.app
+        volumes:
+            - ./mysql-5.7:/var/lib/mysql/
+        environment:
+            - MYSQL_ROOT_PASSWORD=
+            - MYSQL_DATABASE=
+            - MYSQL_USER=
+            - MYSQL_PASSWORD=
+        ports:
+            - "3306:3306"
+        privileged: true
