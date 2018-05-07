@@ -1,13 +1,12 @@
 Workspace with docker compose, including:
-    - php 7.2
-    - apache2
-    - mysql 5.7.22
+    php 7.2
+    apache2
+    mysql 5.7.22
 
 - Reading htaccess file
 - Laravel projects tested and working
 
-Usage:
-    Setup configurations in docker-compose.yml
+Usage: Setup configurations in docker-compose.yml
 
     WebSites projects is insert in html folder
 
