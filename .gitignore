@@ -1,0 +1,4 @@
+html/*
+mysql-5.7/*
+postgres-9.6.9/*
+*.directory
