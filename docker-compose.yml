@@ -5,11 +5,11 @@ services:
 
 ### Apache with php-7.2
 
-    apache-php-7.2:
+    apache_php-7.2.app:
         build: ./apache2-php-7.2/
         volumes:
-        - ./html:/var/www/html/
-	- ./php/:/etc/php/7.2/
+            - ./html:/var/www/html/
+            - ./php/:/etc/php/7.2/
         environment:
             WEB_DOCUMENT_ROOT: "/var/www/html"
         ports:
@@ -17,20 +17,35 @@ services:
             - "443:443"
         privileged: true
         links:
-            - mysql-5_7_22.app
+            - mysql-5.7.22.app
 
 ### Mysql 5.7.22
 
-    mysql-5_7_22.app:
+    mysql-5.7.22.app:
         image: mysql:5.7.22
-        container_name: mysql-5_7_22.app
+        container_name: mysql-5.7.22.app
         volumes:
             - ./mysql-5.7:/var/lib/mysql/
         environment:
-            - MYSQL_ROOT_PASSWORD=
+            - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=
             - MYSQL_USER=
             - MYSQL_PASSWORD=
         ports:
             - "3306:3306"
         privileged: true
+
+### Postgresql 9.6.9
+
+    postgres-9.6.9.app:
+        image: postgres:9.6.9-alpine
+        container_name: postgres-9.6.9.app
+        restart: always
+        environment:
+            - POSTGRES_USER:'herison'
+            - POSTGRES_PASSWORD:'root'
+            - POSTGRES_DB:''
+        ports:
+            - '5432:5432'
+        volumes:
+            - ./postgres-9.6.9:/var/lib/postgresql/data
