@@ -5,6 +5,7 @@ Workspace with docker compose, including:
 
 - Reading htaccess file
 - Laravel projects tested and working
+- Composer and git built in apache_php-7.2.app container
 
 Usage: Setup configurations in docker-compose.yml
 
